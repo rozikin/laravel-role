@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\RoleDataTable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -18,14 +19,11 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(RoleDataTable $dataTable)
     {
 
         $this->authorize('read role');
-        // if (!Gate::allows('read role')) {
-        //     // abort(403, 'unauthorized');
-        // }
-        return view('role.index');
+        return $dataTable->render('konfigurasi.role');
     }
 
     /**
