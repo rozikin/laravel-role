@@ -37,11 +37,11 @@ class RoleDataTable extends DataTable
 
                 $action = '';
                 if (Gate::allows('update role')) {
-                    $action = '<button type="button" class="btn btn-sm mb-2 btn-primary btn-sm"><i class="ti-pencil"></i></button>';
+                    $action = '<button type="button" class="btn mb-2 btn-primary btn-sm"><i class="ti-pencil"></i></button>';
                 }
 
                 if (Gate::allows('delete role')) {
-                    $action .= ' <button type="button" class="btn btn-sm mb-2 btn-danger btn-sm"><i class="ti-trash"></i></button>';
+                    $action .= ' <button type="button" class="btn mb-2 btn-danger btn-sm"><i class="ti-trash"></i></button>';
                 }
                 return $action;
             })
@@ -96,10 +96,10 @@ class RoleDataTable extends DataTable
         return [
 
             // Column::make('id'),
-            Column::make('DT_RowIndex')->title('No')->searchable(false)->orderable(false),
-            Column::make('name'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+            Column::make('DT_RowIndex')->title('No')->searchable(false)->orderable(false)->width(60),
+            Column::make('name')->width(60),
+            Column::make('created_at')->width(60),
+            Column::make('updated_at')->width(60),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
