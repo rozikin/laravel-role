@@ -21,6 +21,10 @@
                         <h4>Roles</h4>
                     </div>
                     <div class="card-body">
+                        @if (request()->user()->can('create role'))
+                         <button type="button" class="btn btn-primary btn-sm mb-3">Add Data</button>
+                        @endif
+
                        {{ $dataTable->table()}}
                     </div>
                 </div>
