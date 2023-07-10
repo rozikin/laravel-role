@@ -12,7 +12,7 @@ class RoleController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('can:create role')->only('create');
+        $this->middleware('can:create konfigurasi/roles')->only('create');
     }
 
 
@@ -24,7 +24,7 @@ class RoleController extends Controller
     public function index(RoleDataTable $dataTable)
     {
 
-        $this->authorize('read role');
+        $this->authorize('read konfigurasi/roles');
         return $dataTable->render('konfigurasi.role');
     }
 
@@ -35,7 +35,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return 'create role page';
+        return view('konfigurasi.role-action', ['role' => new Role]);
     }
 
 
@@ -45,9 +45,14 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RoleRequest $request)
     {
-        //
+        Role::create($request->all());
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Create data successfully'
+        ]);
     }
 
     /**
@@ -97,8 +102,12 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
-        //
+        $role->delete();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Delete data successfuly'
+        ]);
     }
 }
