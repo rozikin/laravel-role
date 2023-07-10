@@ -37,11 +37,11 @@ class RoleDataTable extends DataTable
 
                 $action = '';
                 if (Gate::allows('update role')) {
-                    $action = '<button type="button" class="btn mb-2 btn-primary btn-sm"><i class="ti-pencil"></i></button>';
+                    $action = '<button type="button" data-id=' . $row->id . ' data-jenis="edit" class="btn mb-2 btn-primary btn-sm action"><i class="ti-pencil"></i></button>';
                 }
 
                 if (Gate::allows('delete role')) {
-                    $action .= ' <button type="button" class="btn mb-2 btn-danger btn-sm"><i class="ti-trash"></i></button>';
+                    $action .= ' <button type="button" data-id=' . $row->id . ' data-jenis="edit" class="btn mb-2 btn-danger btn-sm action"><i class="ti-trash"></i></button>';
                 }
                 return $action;
             })
