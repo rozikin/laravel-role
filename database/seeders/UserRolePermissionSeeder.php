@@ -56,19 +56,38 @@ class UserRolePermissionSeeder extends Seeder
         $permission = Permission::create(['name' => 'update konfigurasi/roles']);
         $permission = Permission::create(['name' => 'delete konfigurasi/roles']);
 
+        $permission = Permission::create(['name' => 'read master/item']);
+
+
+        $permission = Permission::create(['name' => 'read master/employee']);
+
         $permission = Permission::create(['name' => 'read konfigurasi/permissions']);
-        $permission = Permission::create(['name' => 'read konfigurasi/transaksi']);
 
         Permission::create(['name' => 'read konfigurasi']);
+        Permission::create(['name' => 'read master']);
+
+
+
+
+
+
 
         $role_it->givePermissionTo('read konfigurasi/roles');
         $role_it->givePermissionTo('create konfigurasi/roles');
         $role_it->givePermissionTo('update konfigurasi/roles');
         $role_it->givePermissionTo('delete konfigurasi/roles');
+
+        $role_it->givePermissionTo('read master/item');
+        $role_it->givePermissionTo('read master/employee');
+
+
+        $role_it->givePermissionTo('read master');
+
+
+
         $role_it->givePermissionTo('read konfigurasi');
 
         $role_it->givePermissionTo('read konfigurasi/permissions');
-        $role_it->givePermissionTo('read konfigurasi/transaksi');
 
 
         $staff->assignRole('staff');

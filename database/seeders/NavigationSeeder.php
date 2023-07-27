@@ -37,14 +37,20 @@ class NavigationSeeder extends Seeder
 
 
         $transaksi = Navigation::create([
-            'name' => 'Transaksi',
-            'url' => 'transaksi',
+            'name' => 'Master',
+            'url' => 'master',
             'icon' => 'ti-book',
             'main_menu' => null,
         ]);
         $transaksi->subMenus()->create([
-            'name' => 'Tes',
-            'url' => 'transaksi/tes',
+            'name' => 'Item',
+            'url' => 'master/item',
+            'icon' => '',
+            'main_menu' => 1,
+        ]);
+        $transaksi->subMenus()->create([
+            'name' => 'Employee',
+            'url' => 'master/employee',
             'icon' => '',
             'main_menu' => 1,
         ]);
